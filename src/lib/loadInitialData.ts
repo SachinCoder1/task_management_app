@@ -14,7 +14,7 @@ export const loadInitialData = async () => {
           const tasks = await response.json();
           await addMultipleTasks(tasks);
         }
-        resolve();
+        resolve(true);
       };
   
       request.onerror = () => reject(request.error);
