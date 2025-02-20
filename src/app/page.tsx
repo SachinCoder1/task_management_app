@@ -1,10 +1,10 @@
-
 import Main from "@/components/Main";
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-       <Main /> 
+    <div className="px-20 py-6 font-[family-name:var(--font-geist-sans)]">
+      <h2 className="text-xl mb-12 mt-2 text-center">📒 Task Management</h2>
+      <Main />
     </div>
   );
 }

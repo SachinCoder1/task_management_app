@@ -2,6 +2,8 @@
 
 import { Drawer } from "vaul";
 import { useEffect } from "react";
+import { Button } from "./button";
+import { X } from "lucide-react";
 type Props = {
   isOpen: boolean;
   onClose: () => void;
@@ -30,12 +32,13 @@ export default function CustomDrawer({
               <Drawer.Title className="font-medium mb-2 text-zinc-900">
                 {title}
               </Drawer.Title>
-              <button
-                className="text-gray-600 hover:text-black"
+              <Button
+                size={"icon"}
+                variant={"ghost"}
                 onClick={onClose}
               >
-                ✖
-              </button>
+                <X />
+              </Button>
             </div>
 
             {/* Drawer Content */}
