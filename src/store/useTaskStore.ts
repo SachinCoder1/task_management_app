@@ -303,6 +303,7 @@ const useTaskStore = create<TaskStoreState & TaskStoreActions>((set, get) => ({
 
       // Remove field from all tasks
       const updatedTasks: Task[] = state.tasks.map((task) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { [fieldName]: _, ...rest } = task;
         return { ...rest } as Task;
       });

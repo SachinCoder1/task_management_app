@@ -1,6 +1,13 @@
 import { useEffect } from "react";
 
-function Modal({ isOpen, onClose, title, children }) {
+type Props = {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+};
+
+function Modal({ isOpen, onClose, title, children }: Props) {
   useEffect(() => {
     if (isOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
@@ -13,7 +20,12 @@ function Modal({ isOpen, onClose, title, children }) {
       <div className="bg-white rounded-lg shadow-lg p-6 w-96 relative">
         <h2 className="text-lg font-semibold">{title}</h2>
         <div className="mt-4">{children}</div>
-        <button className="absolute top-3 right-3 text-gray-500 hover:text-black" onClick={onClose}>×</button>
+        <button
+          className="absolute top-3 right-3 text-gray-500 hover:text-black"
+          onClick={onClose}
+        >
+          ×
+        </button>
       </div>
     </div>
   );

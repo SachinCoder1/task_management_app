@@ -8,7 +8,6 @@ import { z } from "zod";
 import CustomDrawer from "./ui/CustomDrawer";
 import useDrawerStore from "@/store/useDrawerStore";
 import { Button } from "./ui/button";
-import { ArrowRight, Check, CheckCheck, ChevronRight } from "lucide-react";
 import { InputWithLabel } from "./ui/inputwithlabel";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
@@ -64,13 +63,13 @@ export default function TaskDrawer() {
 
   const resetForm = () => {
     if (editingTask) {
-      // reset(editingTask);
       reset({
         ...editingTask,
         customFields: customFields.map((field) => ({
           name: field.name,
           value:
-            editingTask[field.name] ?? (field.type === "checkbox" ? false : ""),
+            (editingTask[field.name] as string | boolean | undefined) ??
+            (field.type === "checkbox" ? false : ""),
           type: field.type,
         })),
       });
@@ -83,10 +82,12 @@ export default function TaskDrawer() {
     resetForm();
   }, [editingTask, reset, customFields, isOpen]);
 
-  const onSubmit = async (data) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSubmit = async (data: any) => {
     const formattedTask = {
       ...data,
-      ...data.customFields.reduce((acc, field) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ...data.customFields.reduce((acc: any, field: any) => {
         acc[field.name] = field.value;
         return acc;
       }, {}),

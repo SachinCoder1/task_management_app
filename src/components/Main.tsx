@@ -8,9 +8,7 @@ import TaskFilters from "./TaskFilters";
 import CustomFieldEditor from "./CustomFieldEditor";
 import useTaskStore from "@/store/useTaskStore";
 
-type Props = {};
-
-const Main = (props: Props) => {
+const Main = () => {
   const openDrawer = useDrawerStore().openDrawer;
   const loadInitialTaskData = useTaskStore().loadInitialTaskData;
   const loading = useTaskStore().loading;
